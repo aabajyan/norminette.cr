@@ -16,16 +16,15 @@ class Norminette::Validate
   private def check_recursive(files : Enumerable(String))
     files.each do |file|
       file = File.join(CURRENT_PATH, file) if !Path[file].absolute?
-
-      if File.directory? file
+      if File.directory?(file) && !File.symlink?(file)
         check_recursive Dir["#{file}/*"]
       else
-        unless is_valid_file? file
-          puts "#{File.basename(file)} is not a valid file."
+        if is_valid_file? file
+          send_file file
           next
         end
 
-        send_file file
+        puts "#{File.basename(file)} is not a valid file."
       end
     end
   end

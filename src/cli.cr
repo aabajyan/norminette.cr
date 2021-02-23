@@ -27,14 +27,9 @@ OptionParser.parse do |parser|
     temp.sync
     exit
   end
-
-  # parser.on "-R", "--rules Array", "Rules to disable" do |rule|
-  #   rules << rule
-  # end
 end
 
 Norminette::Validate.new(->(result : JSON::Any) do
-  # , rules: @rules
   puts "Norme: #{result["filename"]}"
   puts result["display"] if result["display"].as_s?
 end).check ARGV

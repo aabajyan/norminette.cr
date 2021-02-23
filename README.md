@@ -1,34 +1,25 @@
-# norminette
+# norminette.cr
 
-TODO: Write a description here
+Crystal implementation of the official 42 Norminette.
 
 ## Installation
 
-1. Add the dependency to your `shard.yml`:
-
-   ```yaml
-   dependencies:
-     norminette:
-       github: your-github-user/norminette
-   ```
-
-2. Run `shards install`
+```
+git clone https://github.com/iv-org/aabajyan/norminette.cr
+cd norminette.cr
+crystal build src/cli.cr -o norminette
+alias norminette='/mnt/d/Cookbook/crystal/norminette/norminette'
+```
 
 ## Usage
 
-```crystal
-require "norminette"
 ```
-
-TODO: Write usage instructions here
-
-## Development
-
-TODO: Write development instructions here
+norminette [/path/to/project]
+```
 
 ## Contributing
 
-1. Fork it (<https://github.com/your-github-user/norminette/fork>)
+1. Fork it (<https://github.com/aabajyan/norminette.cr/fork>)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
@@ -36,4 +27,4 @@ TODO: Write development instructions here
 
 ## Contributors
 
-- [your-name-here](https://github.com/your-github-user) - creator and maintainer
+- [Arsen Abajyan](https://github.com/aabajyan) - creator and maintainer
