@@ -28,7 +28,7 @@ class Norminette::Sender
     # I've tried to use those Functions but ConditionVariable.signal wasn't
     # being called.
     until @counter == 0
-      sleep 1 
+      sleep 1
     end
   end
 

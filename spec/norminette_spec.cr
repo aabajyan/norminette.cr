@@ -2,7 +2,6 @@ require "./spec_helper"
 require "json"
 
 describe Norminette do
-
   # TODO: Probably need more tests.
   it "connection" do
     connected = false
