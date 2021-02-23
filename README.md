@@ -4,18 +4,24 @@ Crystal implementation of the official 42 Norminette.
 
 ## Installation
 
-```
+```sh
 git clone https://github.com/aabajyan/norminette.cr
 cd norminette.cr
+shards install
 crystal build src/cli.cr -o norminette
-alias norminette='/path/to/norminette'
+alias norminette='/path/to/norminette.cr/norminette'
 ```
 
 ## Usage
 
 ```
-norminette [/path/to/project]
+norminette [paths, default: CURRENT_DIR] [-h|--help] [-v|--version]
 ```
+
+## TODO
+
+- [ ] Add a way to use this as a library, for example return a JSON data once it's done.
+- [ ] Add a way to check the files with specificied rules only.
 
 ## Contributing
 
