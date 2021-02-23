@@ -8,7 +8,7 @@ Crystal implementation of the official 42 Norminette.
 git clone https://github.com/aabajyan/norminette.cr
 cd norminette.cr
 crystal build src/cli.cr -o norminette
-alias norminette='/mnt/d/Cookbook/crystal/norminette/norminette'
+alias norminette='/path/to/norminette'
 ```
 
 ## Usage
