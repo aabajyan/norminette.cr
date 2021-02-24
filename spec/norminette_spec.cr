@@ -6,7 +6,7 @@ describe Norminette do
   it "connection" do
     connected = false
     test = Norminette::Sender.new ->(result : JSON::Any) do
-      connected = true
+      connected = true if result["display"].as_s?
     end
 
     test.publish({action: "version"}.to_json)

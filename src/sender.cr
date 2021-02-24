@@ -9,7 +9,7 @@ class Norminette::Sender
   @properties : AMQ::Protocol::Properties
   @counter : UInt32
 
-  def initialize(callback : Proc)
+  def initialize(callback : Proc(JSON::Any, Nil))
     @sender = AMQP::Client.new(host: HOSTNAME, user: USER, password: PASSWORD).connect
     @channel = @sender.channel
     @exchange = @channel.default_exchange

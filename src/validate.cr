@@ -1,6 +1,7 @@
 class Norminette::Validate
-  def initialize(callback : Proc)
+  def initialize(callback : Proc(JSON::Any, Nil), error : Proc(String, Nil))
     @sender = Norminette::Sender.new callback
+    @error = error
   end
 
   def check(files : Array(String))
@@ -24,7 +25,7 @@ class Norminette::Validate
           next
         end
 
-        puts "#{File.basename(file)} is not a valid file."
+        @error.call file
       end
     end
   end

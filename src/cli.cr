@@ -2,10 +2,7 @@ require "json"
 require "option_parser"
 require "./norminette"
 
-# rules = [] of String
 OptionParser.parse do |parser|
-  parser.banner = "Welcome to The Beatles App!"
-
   parser.on "-h", "--help", "Show help" do
     temp = Norminette::Sender.new ->(result : JSON::Any) do
       puts "Norminette usage:"
@@ -29,7 +26,13 @@ OptionParser.parse do |parser|
   end
 end
 
-Norminette::Validate.new(->(result : JSON::Any) do
+def print_norme(result : JSON::Any)
   puts "Norme: #{result["filename"]}"
   puts result["display"] if result["display"].as_s?
-end).check ARGV
+end
+
+def print_error(file : String)
+  puts "#{File.basename(file)} is not a valid file."
+end
+
+Norminette::Validate.new(->print_norme(JSON::Any), ->print_error(String)).check ARGV
