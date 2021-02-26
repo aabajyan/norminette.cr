@@ -1,7 +1,6 @@
 class Norminette::Validate
-  def initialize(callback : Proc(JSON::Any, Nil), error : Proc(String, Nil))
+  def initialize(callback : Proc(JSON::Any, Nil), @error : Proc(String, Nil))
     @sender = Norminette::Sender.new callback
-    @error = error
   end
 
   def check(files : Array(String))
@@ -20,18 +19,17 @@ class Norminette::Validate
       if File.directory?(file) && !File.symlink?(file)
         check_recursive Dir["#{file}/*"]
       else
-        if is_valid_file? file
-          send_file file
-          next
-        end
-
-        @error.call file
+        send_file file
       end
     end
   end
 
   def send_file(file : String)
-    send ({filename: File.basename(file), content: File.read(file)}).to_json
+    if is_valid_file? file
+      send ({filename: File.basename(file), content: File.read(file)}).to_json
+      return
+    end
+    @error.call file
   end
 
   def send(content : String)

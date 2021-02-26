@@ -13,13 +13,18 @@ class Norminette::Sender
     @sender = AMQP::Client.new(host: HOSTNAME, user: USER, password: PASSWORD).connect
     @channel = @sender.channel
     @exchange = @channel.default_exchange
-    @queue = @channel.queue("", exclusive: true)
+    @queue = @channel.queue
     @properties = AMQ::Protocol::Properties.new(reply_to: @queue.name, correlation_id: UUID.random.to_s)
     @counter = 0
 
     @queue.subscribe do |msg|
       @counter -= 1
-      callback.call JSON.parse(msg.body_io)
+      data = JSON.parse(msg.body_io)
+      callback.call data
+      if data["stop"]? == true
+        @counter = 0
+        close
+      end
     end
   end
 

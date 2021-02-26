@@ -20,7 +20,7 @@ norminette [paths, default: CURRENT_DIR] [-h|--help] [-v|--version]
 
 ## TODO
 
-- [ ] Add a way to use this as a library, for example return a JSON data once it's done.
+- [*] Add a way to use this as a library, for example return a JSON data once it's done.
 - [ ] Add a way to check the files with specificied rules only.
 
 ## Contributing

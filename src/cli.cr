@@ -16,6 +16,7 @@ OptionParser.parse do |parser|
 
   parser.on "-v", "--version", "Show version" do
     temp = Norminette::Sender.new ->(result : JSON::Any) do
+      puts result
       puts "Norminette.cr version #{Norminette::VERSION}:"
       puts "Norminette server version: #{result["display"]}"
     end
