@@ -1,5 +1,5 @@
 class Norminette::Validate
-  def initialize(callback : Proc(JSON::Any, Nil), @error : Proc(String, Nil))
+  def initialize(@rules : Array(String), callback : Proc(JSON::Any, Nil), @error : Proc(String, Nil))
     @sender = Norminette::Sender.new callback
   end
 
