@@ -1,0 +1,13 @@
+name: norminette
+version: 0.1.0
+
+authors:
+  - aabajyan
+
+crystal: 0.36.1
+
+license: MIT
+
+dependencies:
+  amqp-client:
+    github: cloudamqp/amqp-client.cr
